@@ -35,8 +35,16 @@ function getExcuse() {
   return `${who[indexWho]} ${action[indexAction]} ${what[indexWhat]} ${when[indexWhen]}`;
 }
 
+function ramdomExcuse() {
+  document.getElementById("excuses").innerHTML = getExcuse();
+  document.getElementById("image").src = whoPicture[indexPicture];
+}
+
 window.onload = () => {
   //write your code here
-  document.getElementById("excuses").innerHTML = getExcuse() + indexPicture;
-  document.getElementById("image").src = whoPicture[indexPicture];
+  ramdomExcuse();
+};
+
+document.getElementById("p1").onclick = function() {
+  ramdomExcuse();
 };
