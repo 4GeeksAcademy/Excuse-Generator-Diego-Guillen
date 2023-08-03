@@ -22,21 +22,23 @@ let whoPicture = [
   "https://media.gq.com/photos/5a3bff68c2cf0649ff7c22bc/16:9/w_2560%2Cc_limit/star-wars-porg.jpg"
 ];
 
-function changeImage(imgId, a) {
-  document.getElementById(imgId).src = a;
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
 }
-
-function getExcuse() {
-  let indexWho = Math.floor(Math.random() * who.length);
-  let indexAction = Math.floor(Math.random() * action.length);
-  let indexWhat = Math.floor(Math.random() * what.length);
-  let indexWhen = Math.floor(Math.random() * when.length);
-  indexPicture = indexWho;
-  return `${who[indexWho]} ${action[indexAction]} ${what[indexWhat]} ${when[indexWhen]}`;
+function getExcuse(whoDid, actionDid, whatDid, whenDid) {
+  indexPicture = getRandomIndex(whoDid);
+  return `${who[indexPicture]} ${action[getRandomIndex(actionDid)]} ${
+    what[getRandomIndex(whatDid)]
+  } ${when[getRandomIndex(whenDid)]}`;
 }
 
 function ramdomExcuse() {
-  document.getElementById("excuses").innerHTML = getExcuse();
+  document.getElementById("excuses").innerHTML = getExcuse(
+    who,
+    action,
+    what,
+    when
+  );
   document.getElementById("image").src = whoPicture[indexPicture];
 }
 
